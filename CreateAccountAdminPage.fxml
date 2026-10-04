@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="520.0" prefWidth="780.0" style="            -fx-background-color: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364),                                 linear-gradient(to top left, rgba(102,126,234,0.4), rgba(118,75,162,0.4));            " xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminAccountController">
+
+
+    <children>
+
+        <!-- MAIN CARD -->
+        <VBox alignment="CENTER" maxWidth="420" spacing="18" style="               -fx-background-color: linear-gradient(to bottom right, rgba(255,255,255,0.92), rgba(240,245,255,0.88));               -fx-background-radius: 30;               -fx-border-radius: 30;               -fx-border-color: linear-gradient(to right, #667eea, #764ba2);               -fx-border-width: 1.5;               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 25,0,0,8);               ">
+
+            <padding>
+                <Insets bottom="30" left="30" right="30" top="30" />
+            </padding>
+
+            <!-- TITLE -->
+            <Label style="-fx-font-weight: bold; -fx-text-fill: #2d3436;" text="Create Account">
+                <font><Font size="26" /></font>
+            </Label>
+
+            <Label style="-fx-text-fill: #636e72;" text="Admin Registration">
+                <font><Font size="14" /></font>
+            </Label>
+
+            <!-- FORM -->
+            <VBox spacing="14">
+
+                <!-- GMAIL -->
+                <TextField fx:id="mail123" onAction="#mail1234" promptText="Enter your Gmail" style="                            -fx-background-color: #f8f9fb;                            -fx-background-radius: 12;                            -fx-border-radius: 12;                            -fx-border-color: #dfe6e9;                            " />
+
+                <!-- USERNAME -->
+                <TextField fx:id="uername123" onAction="#uername1234" promptText="Enter Username" style="                            -fx-background-color: #f8f9fb;                            -fx-background-radius: 12;                            -fx-border-radius: 12;                            -fx-border-color: #dfe6e9;                            " />
+
+                <!-- PASSWORD (ONLY MODIFIED PART) -->
+                <HBox spacing="10">
+                    <PasswordField fx:id="password123" onAction="#password1234" promptText="Enter Password" style="                                -fx-background-color: #f8f9fb;                                -fx-background-radius: 12;                                -fx-border-radius: 12;                                -fx-border-color: #dfe6e9;                                " HBox.hgrow="ALWAYS" />
+
+                    <!-- visible text field -->
+                    <TextField fx:id="passwordVisible" managed="false" style="                                -fx-background-color: #f8f9fb;                                -fx-background-radius: 12;                                -fx-border-radius: 12;                                -fx-border-color: #dfe6e9;                                " visible="false" HBox.hgrow="ALWAYS" />
+
+                    <!-- toggle button -->
+                    <Button onAction="#togglePassword" style="-fx-background-color: transparent;" text="👁" />
+                </HBox>
+
+                <Label style="-fx-text-fill: #636e72;" text="Use at least 8 characters">
+                    <font><Font size="11" /></font>
+                </Label>
+
+            </VBox>
+
+            <!-- BUTTONS -->
+            <VBox alignment="CENTER" spacing="12">
+
+                <Button fx:id="submit123" onAction="#submit1234" prefWidth="260" style="                         -fx-background-color: linear-gradient(to right, #a1c4fd, #c2e9fb);                         -fx-text-fill: #2c3e50;                         -fx-font-weight: bold;                         -fx-background-radius: 30;                         " text="Submit" />
+
+                <Button fx:id="back123" onAction="#back1234" prefWidth="260" style="                         -fx-background-color: linear-gradient(to right, #d4a5ff, #b8c6ff);                         -fx-text-fill: #2c3e50;                         -fx-font-weight: bold;                         -fx-background-radius: 30;                         " text="Back" />
+
+            </VBox>
+
+        </VBox>
+
+    </children>
+</StackPane>

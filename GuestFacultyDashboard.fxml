@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="GuestFacultyController"
+            style="-fx-background-color:#e0f7fa;">
+
+    <!-- HEADER -->
+    <top>
+        <HBox alignment="CENTER"
+              style="-fx-background-color:#00acc1; -fx-padding:20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.5, 0, 2);">
+            <Label text="Guest Faculty Log Manager - Guest Faculty Dashboard"
+                   style="-fx-text-fill:white; -fx-font-size:24px; -fx-font-weight:bold; -fx-effect: innershadow(gaussian, rgba(255,255,255,0.3), 2,0.5,0,0);"/>
+        </HBox>
+    </top>
+
+    <!-- SIDEBAR -->
+    <left>
+        <VBox spacing="20" alignment="TOP_CENTER" prefWidth="250" style="-fx-background-color:#1e293b; -fx-padding:40;">
+
+            <Button text="Faculty Details" prefWidth="200" prefHeight="55" onAction="#showFacultyDetails"
+                    style="-fx-background-color: linear-gradient(to bottom right, #38bdf8, #06b6d4); -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 8,0.5,0,2);"/>
+
+            <Button text="Start Session" prefWidth="200" prefHeight="55" onAction="#showStartSession"
+                    style="-fx-background-color: linear-gradient(to bottom right, #38bdf8, #06b6d4); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 8,0.5,0,2);"/>
+
+            <Button text="Session History" prefWidth="200" prefHeight="55" onAction="#showHistory"
+                    style="-fx-background-color: linear-gradient(to bottom right, #fb923c, #f97316); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 8,0.5,0,2);"/>
+
+            <Button text="Student Feedback" prefWidth="200" prefHeight="55" onAction="#showFeedback"
+                    style="-fx-background-color: linear-gradient(to bottom right, #8b5cf6, #7c3aed); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 8,0.5,0,2);"/>
+
+            <Button text="Visit Summary" prefWidth="200" prefHeight="55" onAction="#showSummary"
+                    style="-fx-background-color: linear-gradient(to bottom right, #10b981, #059669); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 8,0.5,0,2);"/>
+
+            <Button text="Logout" prefWidth="200" prefHeight="55" onAction="#logout"
+                    style="-fx-background-color: linear-gradient(to bottom right, #ef4444, #b91c1c); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 8,0.5,0,2);"/>
+        </VBox>
+    </left>
+
+    <!-- CENTER CONTENT -->
+    <center>
+        <AnchorPane style="-fx-padding:30; -fx-background-color: linear-gradient(to bottom right, #e0f7fa, #ffffff);">
+
+            <!-- FACULTY DETAILS -->
+            <GridPane fx:id="facultyPane" visible="false" layoutX="80" layoutY="40" hgap="20" vgap="15">
+                <Label text="Faculty Name:"/>
+                <TextField fx:id="facultyNameField" GridPane.columnIndex="1" prefWidth="250"/>
+                
+                <Label text="Affiliation:" GridPane.rowIndex="1"/>
+                <TextField fx:id="facultyAffiliationField" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="250"/>
+                
+                <Label text="Designation:" GridPane.rowIndex="2"/>
+                <ComboBox fx:id="designationBox" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="250"/>
+                
+                <Button text="Save" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="150" onAction="#saveFacultyDetails"
+                        style="-fx-background-color:#10b981; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 6,0.5,0,2);"/>
+            </GridPane>
+
+            <!-- START SESSION -->
+            <GridPane fx:id="sessionPane" visible="false" layoutX="80" layoutY="40" hgap="20" vgap="15">
+                <Label text="Session Topic:"/>
+                <TextField fx:id="topicField" GridPane.columnIndex="1" prefWidth="300"/>
+                
+                <Label text="Department:" GridPane.rowIndex="1"/>
+                <ComboBox fx:id="departmentBox" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="300"/>
+                
+                <Label text="Year:" GridPane.rowIndex="2"/>
+                <ComboBox fx:id="yearBox" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="300"/>
+                
+                <Label text="Section:" GridPane.rowIndex="3"/>
+                <ComboBox fx:id="sectionBox" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="300"/>
+                
+                <Label text="Date:" GridPane.rowIndex="4"/>
+                <DatePicker fx:id="datePicker" GridPane.columnIndex="1" GridPane.rowIndex="4" prefWidth="300"/>
+                
+                <Label text="Start Time:" GridPane.rowIndex="5"/>
+                <TextField fx:id="startTimeField" GridPane.columnIndex="1" GridPane.rowIndex="5" promptText="10:00 AM"/>
+                
+                <Label text="End Time:" GridPane.rowIndex="6"/>
+                <TextField fx:id="endTimeField" GridPane.columnIndex="1" GridPane.rowIndex="6" promptText="11:30 AM"/>
+                
+                <Button text="Save Session" GridPane.columnIndex="1" GridPane.rowIndex="7" prefWidth="150" onAction="#saveSession"
+                        style="-fx-background-color:#10b981; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 6,0.5,0,2);"/>
+            </GridPane>
+
+            <!-- SESSION HISTORY -->
+            <TableView fx:id="historyTable" visible="false" layoutX="50" layoutY="100" prefWidth="850" prefHeight="380"/>
+
+            <!-- STUDENT FEEDBACK -->
+            <TableView fx:id="feedbackTable" visible="false" layoutX="50" layoutY="100" prefWidth="850" prefHeight="380"/>
+
+            <!-- VISIT SUMMARY -->
+            <VBox fx:id="summaryBox" visible="false" layoutX="120" layoutY="120" spacing="15">
+                <Label text="Faculty Name: Dr. John" style="-fx-font-size:18px;"/>
+                <Label text="Total Sessions: 5" style="-fx-font-size:18px;"/>
+                <Label text="Total Teaching Hours: 8 Hours" style="-fx-font-size:18px;"/>
+                <Label text="Departments Covered: CSE, AIML, ECE" style="-fx-font-size:18px;"/>
+            </VBox>
+
+        </AnchorPane>
+    </center>
+</BorderPane>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom right,#141E30,#243B55);" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+    <children>
+
+        <!-- Background Glow Circles -->
+        <Circle layoutX="80" layoutY="70" opacity="0.25" radius="90">
+            <fill>
+                <RadialGradient centerX="0.5" centerY="0.5" radius="0.7">
+                    <stops>
+                        <Stop color="#00e5ff" offset="0" />
+                        <Stop color="transparent" offset="1" />
+                    </stops>
+                </RadialGradient>
+            </fill>
+        </Circle>
+
+        <Circle layoutX="520" layoutY="330" opacity="0.25" radius="120">
+            <fill>
+                <RadialGradient centerX="0.5" centerY="0.5" radius="0.7">
+                    <stops>
+                        <Stop color="#7c4dff" offset="0" />
+                        <Stop color="transparent" offset="1" />
+                    </stops>
+                </RadialGradient>
+            </fill>
+        </Circle>
+
+        <!-- Title -->
+        <Label layoutX="150" layoutY="35" text="GUEST FACULTY LOG MANAGER" textFill="#E3F2FD">
+
+            <font>
+                <Font size="22" />
+            </font>
+
+            <effect>
+                <DropShadow color="#000000" radius="12" />
+            </effect>
+
+        </Label>
+
+        <!-- Glass Login Card -->
+        <GridPane layoutX="110" layoutY="100" prefHeight="130" prefWidth="380" style="-fx-background-color: rgba(255,255,255,0.08);                          -fx-background-radius:18;                          -fx-border-color: rgba(255,255,255,0.2);                          -fx-border-radius:18;                          -fx-padding:20;">
+
+            <columnConstraints>
+                <ColumnConstraints prefWidth="130" />
+                <ColumnConstraints prefWidth="230" />
+            </columnConstraints>
+
+            <rowConstraints>
+                <RowConstraints prefHeight="45" />
+                <RowConstraints prefHeight="45" />
+            </rowConstraints>
+
+            <children>
+
+                <Label text="Username :" textFill="#E3F2FD">
+                    <font>
+                        <Font size="16" />
+                    </font>
+                </Label>
+
+                <Label text="Password :" textFill="#E3F2FD" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="16" />
+                    </font>
+                </Label>
+
+                <TextField fx:id="user123" onAction="#user1234" promptText="Enter username" style="-fx-background-color: rgba(255,255,255,0.15);                                   -fx-background-radius:12;                                   -fx-text-fill:white;" GridPane.columnIndex="1" />
+
+                <PasswordField fx:id="p123" onAction="#p1234" promptText="Enter password" style="-fx-background-color: rgba(255,255,255,0.15);                                       -fx-background-radius:12;                                       -fx-text-fill:white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            </children>
+
+            <effect>
+                <DropShadow color="#00000066" radius="20" />
+            </effect>
+
+        </GridPane>
+
+        <!-- Role Selection -->
+        <RadioButton fx:id="s123" layoutX="120" layoutY="250" onAction="#s1234" text="Student" textFill="#E3F2FD" />
+
+        <RadioButton fx:id="f123" layoutX="120" layoutY="280" onAction="#f1234" text="Faculty" textFill="#E3F2FD" />
+
+        <RadioButton fx:id="a123" layoutX="120" layoutY="310" onAction="#a1234" text="Admin" textFill="#E3F2FD" />
+
+        <!-- Login Button (Shiny Gradient) -->
+        <Button fx:id="l123" layoutX="300" layoutY="245" onAction="#l1234" prefHeight="38" prefWidth="170" style="-fx-background-color: linear-gradient(to right,#00c6ff,#0072ff);                        -fx-text-fill:white;                        -fx-font-size:15;                        -fx-background-radius:25;" text="Login">
+
+            <effect>
+                <DropShadow color="#0072ff" radius="12" />
+            </effect>
+
+        </Button>
+
+        <!-- Create Account Button -->
+        <Button fx:id="c123" layoutX="300" layoutY="325" onAction="#c1234" prefHeight="38" prefWidth="170" style="-fx-background-color: linear-gradient(to right,#ff512f,#dd2476);                        -fx-text-fill:white;                        -fx-font-size:15;                        -fx-background-radius:25;" text="Create Account">
+
+            <effect>
+                <DropShadow color="#ff512f" radius="12" />
+            </effect>
+
+        </Button>
+
+        <!-- Forgot Password -->
+        <Hyperlink fx:id="forgot123" layoutX="320" layoutY="290" onAction="#forgot1234" text="Forgot Password?" textFill="#BBDEFB" />
+     <RadioButton fx:id="gf123" layoutX="120.0" layoutY="336.0" mnemonicParsing="false" onAction="#gf1234" text="Guest Faculty" textFill="#f2eded" />
+
+    </children>
+</AnchorPane>

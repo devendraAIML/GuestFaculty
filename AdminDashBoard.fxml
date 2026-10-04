@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="AdminController">
+
+    <!-- HEADER -->
+    <top>
+        <HBox alignment="CENTER"
+              style="-fx-background-color:#3b82f6; -fx-padding:20;">
+            <Label text="Guest Faculty Log Manager - Admin Panel"
+                   style="-fx-text-fill:white; -fx-font-size:24px; -fx-font-weight:bold;"/>
+        </HBox>
+    </top>
+
+    <!-- LEFT SIDEBAR -->
+    <left>
+        <VBox spacing="20"
+              alignment="TOP_CENTER"
+              prefWidth="250"
+              style="-fx-background-color:#1e293b; -fx-padding:40;">
+
+            <Button text="Account Requests"
+                    prefWidth="200"
+                    prefHeight="60"
+                    onAction="#showRequests"
+                    style="-fx-background-color:#3b82f6; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:15;"/>
+
+            <Button text="Session Records"
+                    prefWidth="200"
+                    prefHeight="60"
+                    onAction="#showSession"
+                    style="-fx-background-color:#f97316; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:15;"/>
+
+            <Button text="Feedback"
+                    prefWidth="200"
+                    prefHeight="60"
+                    onAction="#showFeedback"
+                    style="-fx-background-color:#8b5cf6; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:15;"/>
+
+            <Button text="Visit Summary"
+                    prefWidth="200"
+                    prefHeight="60"
+                    onAction="#showSummary"
+                    style="-fx-background-color:#10b981; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:15;"/>
+
+            <Button text="Logout"
+                    prefWidth="200"
+                    prefHeight="60"
+                    onAction="#logout"
+                    style="-fx-background-color:#ef4444; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:15;"/>
+
+        </VBox>
+    </left>
+
+    <!-- CENTER CONTENT -->
+    <center>
+        <AnchorPane fx:id="mainContent"
+                    style="-fx-background-color: lightSkyBlue; -fx-padding:30;">
+
+            <!-- ACCOUNT REQUEST PANEL -->
+            <GridPane fx:id="requestPane"
+                      visible="false"
+                      layoutX="50"
+                      layoutY="30"
+                      hgap="20"
+                      vgap="15">
+
+                <Label text="User Type:"/>
+                <ComboBox fx:id="userTypeBox"
+                          GridPane.columnIndex="1"
+                          prefWidth="300"
+                          promptText="Faculty / Student"/>
+
+                <Label text="Username:" GridPane.rowIndex="1"/>
+                <TextField fx:id="usernameField"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="1"
+                           prefWidth="300"
+                           promptText="Auto-filled from request"/>
+
+                <Label text="Password:" GridPane.rowIndex="2"/>
+                <TextField fx:id="passwordField"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="2"
+                           prefWidth="300"
+                           promptText="Auto-filled from request"/>
+
+                <Label text="Email / Phone:" GridPane.rowIndex="3"/>
+                <TextField fx:id="contactField"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="3"
+                           prefWidth="300"
+                           promptText="Faculty Gmail / Student Phone"/>
+
+                <HBox spacing="20"
+                      GridPane.columnIndex="1"
+                      GridPane.rowIndex="4">
+
+                    <Button text="Accept Request"
+                            onAction="#acceptRequest"
+                            prefWidth="150"
+                            prefHeight="50"
+                            style="-fx-background-color:#10b981; -fx-text-fill:white;"/>
+
+                    <Button text="Reject Request"
+                            onAction="#rejectRequest"
+                            prefWidth="150"
+                            prefHeight="50"
+                            style="-fx-background-color:#ef4444; -fx-text-fill:white;"/>
+
+                </HBox>
+
+            </GridPane>
+
+
+            <!-- SESSION BUTTON -->
+            <VBox fx:id="viewDetailsBox"
+                  visible="false"
+                  AnchorPane.topAnchor="50"
+                  AnchorPane.rightAnchor="50"
+                  alignment="CENTER"
+                  spacing="20">
+
+                <Button text="View Faculty &amp; Session Details"
+                        onAction="#showSessionDetails"
+                        prefWidth="220"
+                        prefHeight="60"
+                        style="-fx-background-color:#2563eb; -fx-text-fill:white; -fx-font-weight:bold;"/>
+
+            </VBox>
+
+
+            <!-- SESSION TABLE -->
+            <TableView fx:id="sessionDetailsTable"
+                       visible="false"
+                       layoutX="50"
+                       layoutY="150"
+                       prefWidth="900"
+                       prefHeight="400">
+
+                <columns>
+
+                    <TableColumn fx:id="colFacultyName"
+                                 text="Faculty Name"
+                                 prefWidth="200"/>
+
+                    <TableColumn fx:id="colSessionName"
+                                 text="Session Name"
+                                 prefWidth="250"/>
+
+                    <TableColumn fx:id="colSessionDuration"
+                                 text="Session Duration"
+                                 prefWidth="200"/>
+
+                    <TableColumn fx:id="colSessionDate"
+                                 text="Session Date"
+                                 prefWidth="250"/>
+
+                </columns>
+
+            </TableView>
+
+
+            <!-- FEEDBACK BUTTONS -->
+            <VBox fx:id="feedbackButtonsBox"
+                  visible="false"
+                  layoutX="50"
+                  layoutY="40"
+                  spacing="20">
+
+                <Button text="Student Rating"
+                        onAction="#showRatingTable"
+                        prefWidth="200"/>
+
+                <Button text="Feedback"
+                        onAction="#showFeedbackTable"
+                        prefWidth="200"/>
+
+            </VBox>
+
+
+            <!-- STUDENT RATING TABLE -->
+            <TableView fx:id="ratingTable"
+                       visible="false"
+                       layoutX="50"
+                       layoutY="150"
+                       prefWidth="900"
+                       prefHeight="400">
+
+                <columns>
+
+                    <TableColumn text="Student Name"
+                                 prefWidth="300"/>
+
+                    <TableColumn text="Session Topic"
+                                 prefWidth="300"/>
+
+                    <TableColumn text="Rating"
+                                 prefWidth="300"/>
+
+                </columns>
+
+            </TableView>
+
+
+            <!-- FEEDBACK TABLE -->
+            <TableView fx:id="feedbackTable"
+                       visible="false"
+                       layoutX="50"
+                       layoutY="150"
+                       prefWidth="900"
+                       prefHeight="400">
+
+                <columns>
+
+                    <TableColumn text="Student Name"
+                                 prefWidth="300"/>
+
+                    <TableColumn text="Feedback"
+                                 prefWidth="600"/>
+
+                </columns>
+
+            </TableView>
+
+
+            <!-- SUMMARY BUTTON -->
+            <VBox fx:id="summaryButtonsBox"
+                  visible="false"
+                  layoutX="50"
+                  layoutY="40">
+
+                <Button text="Generate Summary"
+                        onAction="#generateSummary"
+                        prefWidth="200"/>
+
+            </VBox>
+
+
+            <!-- SUMMARY TABLE -->
+            <TableView fx:id="summaryTable"
+                       visible="false"
+                       layoutX="50"
+                       layoutY="150"
+                       prefWidth="900"
+                       prefHeight="400">
+
+                <columns>
+
+                    <TableColumn text="Faculty Name"
+                                 prefWidth="300"/>
+
+                    <TableColumn text="Session Topic"
+                                 prefWidth="300"/>
+
+                    <TableColumn text="Duration"
+                                 prefWidth="300"/>
+
+                </columns>
+
+            </TableView>
+
+        </AnchorPane>
+    </center>
+
+</BorderPane>
